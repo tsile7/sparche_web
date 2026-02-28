@@ -36,12 +36,13 @@ class LandingNavbar extends ViewModelWidget<LandingViewModel> {
             _NavLogo(),
             const Spacer(),
             if (!isMobile) ...[
-              _NavItem('Features'),
-              _NavItem('Screenshots'),
-              _NavItem('About'),
+              _NavItem('Features',    onTap: () => vm.scrollTo(vm.featuresKey)),
+              _NavItem('Screenshots', onTap: () => vm.scrollTo(vm.screenshotsKey)),
+              _NavItem('About',       onTap: () => vm.scrollTo(vm.aboutKey)),
               const SizedBox(width: 20),
             ],
-            _NavCta(onTap: vm.openPlayStore),
+            // Smart CTA — detects platform and opens the right store
+            _NavCta(onTap: vm.openStore),
           ],
         ),
       ),
@@ -77,7 +78,8 @@ class _NavLogo extends StatelessWidget {
 
 class _NavItem extends StatefulWidget {
   final String label;
-  const _NavItem(this.label);
+  final VoidCallback? onTap;
+  const _NavItem(this.label, {this.onTap});
   @override
   State<_NavItem> createState() => _NavItemState();
 }
@@ -89,17 +91,20 @@ class _NavItemState extends State<_NavItem> {
     onEnter: (_) => setState(() => _hovered = true),
     onExit:  (_) => setState(() => _hovered = false),
     cursor: SystemMouseCursors.click,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      child: AnimatedDefaultTextStyle(
-        duration: const Duration(milliseconds: 150),
-        style: TextStyle(
-          fontFamily: 'DMSans',
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: _hovered ? kBrand : kTxtMuted,
+    child: GestureDetector(
+      onTap: widget.onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 150),
+          style: TextStyle(
+            fontFamily: 'DMSans',
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: _hovered ? kBrand : kTxtMuted,
+          ),
+          child: Text(widget.label),
         ),
-        child: Text(widget.label),
       ),
     ),
   );

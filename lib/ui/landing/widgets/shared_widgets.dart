@@ -228,7 +228,11 @@ class _FadeUpInState extends State<FadeUpIn>
   );
 }
 
-/// Sparche app icon — warm violet gradient with soft shadow.
+/// Sparche app icon — renders the real brand logo from assets.
+/// Add to pubspec.yaml:
+///   flutter:
+///     assets:
+///       - assets/images/sparche_logo.png
 class SparcheIcon extends StatelessWidget {
   final double size;
   final bool shadow;
@@ -238,34 +242,51 @@ class SparcheIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final r = size * 0.24;
+    final image = ClipRRect(
+      borderRadius: BorderRadius.circular(r),
+      child: Image.asset(
+        'assets/images/sparche_logo.png',
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        // Fallback to gradient icon if asset not found
+        errorBuilder: (_, __, ___) => Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFF8B52F5), Color(0xFF6120E2)],
+            ),
+            borderRadius: BorderRadius.circular(r),
+          ),
+          child: Center(
+            child: Icon(
+              Icons.account_balance_wallet_rounded,
+              color: Colors.white,
+              size: size * 0.50,
+            ),
+          ),
+        ),
+      ),
+    );
+
+    if (!shadow) return image;
+
     return Container(
-      width: size,
-      height: size,
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF8B52F5), Color(0xFF6120E2)],
-        ),
         borderRadius: BorderRadius.circular(r),
-        boxShadow: shadow
-            ? [
-                BoxShadow(
-                  color: kBrand.withOpacity(.35),
-                  blurRadius: size * .55,
-                  offset: Offset(0, size * .12),
-                  spreadRadius: -size * .04,
-                ),
-              ]
-            : null,
+        boxShadow: [
+          BoxShadow(
+            color: kBrand.withOpacity(.28),
+            blurRadius: size * .55,
+            offset: Offset(0, size * .12),
+            spreadRadius: -size * .04,
+          ),
+        ],
       ),
-      child: Center(
-        child: Icon(
-          Icons.account_balance_wallet_rounded,
-          color: Colors.white,
-          size: size * 0.50,
-        ),
-      ),
+      child: image,
     );
   }
 }

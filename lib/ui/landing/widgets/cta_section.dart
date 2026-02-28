@@ -70,16 +70,30 @@ class CtaSection extends ViewModelWidget<LandingViewModel> {
               const SizedBox(height: 36),
 
               // Serif headline
-              Text(
-                'Simplify every\nshopping trip.',
+              RichText(
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'DMSerifDisplay',
-                  fontSize: isMobile ? 44 : 58,
-                  fontWeight: FontWeight.w400,
-                  height: 1.06,
-                  letterSpacing: -1.5,
-                  color: Colors.white,
+                text: TextSpan(
+                  style: TextStyle(
+                    fontFamily: 'DMSerifDisplay',
+                    fontSize: isMobile ? 44 : 58,
+                    fontWeight: FontWeight.w400,
+                    height: 1.06,
+                    letterSpacing: -1.5,
+                    color: Colors.white,
+                  ),
+                  children: [
+                    TextSpan(text: 'Say '),
+                    TextSpan(
+                      text: 'Goodbye',
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                    TextSpan(text: ' to a bulky wallet.\n'),
+                    TextSpan(
+                      text: 'Hello',
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                    TextSpan(text: ' to a streamlined digital experience.'),
+                  ],
                 ),
               ),
 

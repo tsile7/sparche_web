@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart'
+    show defaultTargetPlatform, TargetPlatform, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -5,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 /// Data sourced from both Google Play and the Apple App Store listing.
 class LandingViewModel extends BaseViewModel {
 
-  // Store URLs 
+  // ── Store URLs ─────────────────────────────────────────────────────────────
   final Uri playStore = Uri.parse(
     'https://play.google.com/store/apps/details?id=com.philoxenic.sparche',
   );
@@ -15,10 +17,43 @@ class LandingViewModel extends BaseViewModel {
     'https://apps.apple.com/us/app/sparche/id6741689377',
   );
 
-  // Support / info URLs 
-  final Uri websiteUrl    = Uri.parse('https://www.sparche.app');
-  final Uri privacyUrl    = Uri.parse('https://www.sparche.app/privacy-policy');
-  final Uri supportEmail  = Uri.parse('mailto:support@sparche.app');
+  // ── Support / info URLs ────────────────────────────────────────────────────
+  final Uri websiteUrl = Uri.parse('https://www.sparche.app');
+  final Uri privacyUrl = Uri.parse('https://www.sparche.app/privacy-policy');
+
+  // ── GlobalKeys for navbar scroll-to-section navigation ────────────────────
+  // Assigned to section Container widgets in landing_view.dart via `key:`.
+  final GlobalKey featuresKey    = GlobalKey();
+  final GlobalKey screenshotsKey = GlobalKey();
+  final GlobalKey aboutKey       = GlobalKey();
+
+  /// Smooth-scrolls to the widget identified by [key].
+  void scrollTo(GlobalKey key) {
+    final ctx = key.currentContext;
+    if (ctx == null) return;
+    Scrollable.ensureVisible(
+      ctx,
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  /// "Get the App" — opens the correct store for the current device.
+  ///   iOS / macOS  →  Apple App Store
+  ///   Android      →  Google Play
+  ///   Web / other  →  Google Play (safe default; explicit buttons remain)
+  Future<void> openStore() {
+    if (!kIsWeb) {
+      if (defaultTargetPlatform == TargetPlatform.iOS ||
+          defaultTargetPlatform == TargetPlatform.macOS) {
+        return openAppStore();
+      }
+      if (defaultTargetPlatform == TargetPlatform.android) {
+        return openPlayStore();
+      }
+    }
+    return openPlayStore();
+  }
 
   // Play Store CDN screenshots 
   final List<AppScreenshot> screenshots = const [
@@ -114,7 +149,6 @@ class LandingViewModel extends BaseViewModel {
   Future<void> openAppStore()      => launchUrl(appStore,     mode: LaunchMode.externalApplication);
   Future<void> openWebsite()       => launchUrl(websiteUrl,   mode: LaunchMode.externalApplication);
   Future<void> openPrivacyPolicy() => launchUrl(privacyUrl,   mode: LaunchMode.externalApplication);
-  Future<void> openEmail()         => launchUrl(supportEmail, mode: LaunchMode.externalApplication);
 }
 
 // Value objects 

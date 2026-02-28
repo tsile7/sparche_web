@@ -34,13 +34,16 @@ class LandingView extends StatelessWidget {
                   HeroSection(),
                   const WarmDivider(),
 
-                  AboutSection(),
+                  // key lets "About" navbar link scroll here
+                  AboutSection(key: model.aboutKey),
                   const WarmDivider(),
 
-                  ScreenshotsSection(),
+                  // key lets "Screenshots" navbar link scroll here
+                  ScreenshotsSection(key: model.screenshotsKey),
                   const WarmDivider(),
 
-                  FeaturesSection(),
+                  // key lets "Features" navbar link scroll here
+                  FeaturesSection(key: model.featuresKey),
                   const WarmDivider(),
 
                   WhySection(),

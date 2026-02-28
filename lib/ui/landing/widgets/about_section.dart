@@ -131,19 +131,13 @@ class _AboutCopy extends StatelessWidget {
 
           const SizedBox(height: 32),
 
-          // Version history timeline 
-          Text('VERSION HISTORY', style: TextStyle(
-            fontFamily: 'DMSans', fontSize: 10, fontWeight: FontWeight.w700,
-            letterSpacing: 2.5, color: kBrand,
-          )),
-          const SizedBox(height: 16),
-          ...vm.versionHistory.map((v) => _VersionRow(entry: v)),
         ],
       ),
     );
   }
 }
 
+// ignore: unused_element
 class _VersionRow extends StatelessWidget {
   final VersionEntry entry;
   const _VersionRow({required this.entry});

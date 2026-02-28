@@ -30,7 +30,7 @@ class LandingFooter extends ViewModelWidget<LandingViewModel> {
             const WarmDivider(),
             const SizedBox(height: 20),
             Text(
-              '© 2023 Philoxenic. All Rights Reserved.  ·  Pretoria, South Africa  ·  +27 78 129 4073',
+              '© 2026 Philoxenic. All Rights Reserved.  ·  Pretoria, South Africa  ·  +27 76 056 6738',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'DMSans', fontSize: 12,
@@ -101,7 +101,6 @@ class _MobileFooter extends StatelessWidget {
         _FLink('Google Play',         vm.openPlayStore),
         _FLink('App Store',           vm.openAppStore),
         _FLink('Privacy Policy',      vm.openPrivacyPolicy),
-        _FLink('support@sparche.app', vm.openEmail),
       ]),
     ],
   );
