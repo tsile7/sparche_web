@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sparche_web/core/colors.dart';
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  SHARED DESIGN PRIMITIVES — Editorial Soft Light theme
-// ═══════════════════════════════════════════════════════════════════════════
 
 /// Warm white card with soft coloured shadow and rounded corners.
 class WarmCard extends StatelessWidget {
@@ -228,11 +225,7 @@ class _FadeUpInState extends State<FadeUpIn>
   );
 }
 
-/// Sparche app icon — renders the real brand logo from assets.
-/// Add to pubspec.yaml:
-///   flutter:
-///     assets:
-///       - assets/images/sparche_logo.png
+/// Sparche app icon 
 class SparcheIcon extends StatelessWidget {
   final double size;
   final bool shadow;

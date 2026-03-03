@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sparche_web/core/colors.dart';
 import 'package:stacked/stacked.dart';
-
 import '../landing_viewmodel.dart';
 import 'shared_widgets.dart';
 
@@ -41,7 +40,7 @@ class LandingNavbar extends ViewModelWidget<LandingViewModel> {
               _NavItem('About',       onTap: () => vm.scrollTo(vm.aboutKey)),
               const SizedBox(width: 20),
             ],
-            // Smart CTA — detects platform and opens the right store
+            // CTA — detects platform and opens the right store
             _NavCta(onTap: vm.openStore),
           ],
         ),

@@ -2,11 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sparche_web/core/colors.dart';
 import 'package:stacked/stacked.dart';
-
 import '../landing_viewmodel.dart';
 import 'shared_widgets.dart';
 
-/// Screenshot strip — cream background, real Play Store images,
+/// Screenshot strip 
 /// warm card borders, hover-lift with violet accent.
 class ScreenshotsSection extends ViewModelWidget<LandingViewModel> {
   const ScreenshotsSection({super.key});

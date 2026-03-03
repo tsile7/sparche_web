@@ -2,7 +2,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:sparche_web/core/colors.dart';
 import 'package:stacked/stacked.dart';
-
 import '../landing_viewmodel.dart';
 import 'download_buttons.dart';
 import 'shared_widgets.dart';
@@ -45,7 +44,7 @@ class HeroSection extends ViewModelWidget<LandingViewModel> {
   }
 }
 
-// ── Soft radial blobs ─────────────────────────────────────────────────────────
+// Soft radial blobs 
 
 class _HeroBlobs extends StatefulWidget {
   const _HeroBlobs();
@@ -121,8 +120,7 @@ class _BlobPainter extends CustomPainter {
   bool shouldRepaint(_BlobPainter o) => o.t != t;
 }
 
-// ── Desktop ───────────────────────────────────────────────────────────────────
-
+// Desktop 
 class _DesktopHero extends StatelessWidget {
   final LandingViewModel vm;
   const _DesktopHero({required this.vm});
@@ -144,7 +142,7 @@ class _DesktopHero extends StatelessWidget {
   );
 }
 
-// ── Mobile ────────────────────────────────────────────────────────────────────
+// Mobile 
 
 class _MobileHero extends StatelessWidget {
   final LandingViewModel vm;
@@ -161,7 +159,7 @@ class _MobileHero extends StatelessWidget {
   );
 }
 
-// ── Hero copy block ───────────────────────────────────────────────────────────
+// Hero copy block 
 
 class _HeroCopy extends StatelessWidget {
   final LandingViewModel vm;
@@ -273,7 +271,7 @@ class _HeroCopy extends StatelessWidget {
 
         const SizedBox(height: 38),
 
-        // ── Download buttons ──────────────────────────────────────────────
+        // Download buttons 
         FadeUpIn(
           delay: const Duration(milliseconds: 280),
           child: DownloadButtons(viewModel: vm, isMobile: isMobile),

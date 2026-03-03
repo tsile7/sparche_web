@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 /// Data sourced from both Google Play and the Apple App Store listing.
 class LandingViewModel extends BaseViewModel {
 
-  // ── Store URLs ─────────────────────────────────────────────────────────────
+  // Store URLs 
   final Uri playStore = Uri.parse(
     'https://play.google.com/store/apps/details?id=com.philoxenic.sparche',
   );
@@ -17,11 +17,11 @@ class LandingViewModel extends BaseViewModel {
     'https://apps.apple.com/us/app/sparche/id6741689377',
   );
 
-  // ── Support / info URLs ────────────────────────────────────────────────────
+  // Support / info URLs 
   final Uri websiteUrl = Uri.parse('https://www.sparche.app');
   final Uri privacyUrl = Uri.parse('https://www.sparche.app/privacy-policy');
 
-  // ── GlobalKeys for navbar scroll-to-section navigation ────────────────────
+  // GlobalKeys for navbar scroll-to-section navigation 
   // Assigned to section Container widgets in landing_view.dart via `key:`.
   final GlobalKey featuresKey    = GlobalKey();
   final GlobalKey screenshotsKey = GlobalKey();

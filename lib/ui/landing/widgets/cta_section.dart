@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sparche_web/core/colors.dart';
 import 'package:stacked/stacked.dart';
-
 import '../landing_viewmodel.dart';
 import 'download_buttons.dart';
 import 'shared_widgets.dart';
